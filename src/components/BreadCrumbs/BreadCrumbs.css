@@ -1,0 +1,24 @@
+.breadcrumbs-container {
+    display: flex;
+
+    align-items: baseline;
+    font-size: 16px;
+    padding: 0 9%;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    margin: 0 8px;
+    color: #3b3b3b;
+}
+
+.breadcrumb {
+    color: #007bff;
+    cursor: pointer;
+}
+
+.breadcrumb:hover {
+    color: #007bff;
+    cursor: pointer;
+}
