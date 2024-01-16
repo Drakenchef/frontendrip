@@ -1,0 +1,59 @@
+/* Основные цвета */
+:root {
+    --primary-color: #ffffff;        /* Фиолетовый */
+    --hover-color: #aaaab7;          /* Светло-фиолетовый для эффектов при наведении */
+    --text-color: #ffffff;           /* Белый текст */
+    --menu-bg-color: #282c34;        /* Темно-серый фон меню */
+    --disabled-color: #b3b3b3;       /* Светло-серый для заблокированных кнопок */
+}
+
+/* Стиль меню */
+.menu {
+    background-color: var(--menu-bg-color);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок меню */
+.menu h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Кнопки */
+.btn-outline-info {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 30px; /* Для закругления краев */
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-outline-info:hover,
+.btn-outline-info:focus {
+    background-color: var(--hover-color);
+    color: var(--text-color);
+}
+
+/* Для неактивных/заблокированных кнопок */
+.btn.disabled,
+.btn:disabled {
+    border-color: var(--disabled-color);
+    color: var(--disabled-color);
+}
+
+/* Отступы вокруг кнопок и стили ссылок */
+.menu .btn.my-2 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Исправленный опечатка в слове "Зарегистрироваться" */
+.menu .btn:last-child {
+    margin-bottom: 0;
+}
+
+/* Контейнер */
+.container {
+    margin-top: 2.5rem;
+}

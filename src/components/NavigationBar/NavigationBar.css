@@ -1,0 +1,91 @@
+.avatar-container {
+    border-radius: 7px;
+    padding-left: 8px;
+    padding-right: 8px;
+    display: flex;
+    align-items: center;
+    border: 2px solid #d0d0d0; /* Example contrasting border color */
+    height: 40px;
+}
+
+.avatar-container img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* Основные цвета */
+:root {
+    --primary-color: #e85f5f;        /* Ярко-розовый */
+    --hover-color: rgba(23, 85, 199, 0.43);          /* Светло-розовый для эффектов при наведении */
+    --text-color: #ffffff;           /* Белый текст */
+    --navbar-bg-color: #212529;      /* Темный фон навбара */
+}
+
+/* Навбар */
+.navbar {
+    background-color: var(--navbar-bg-color);
+}
+
+.navbar .nav-link,
+.navbar .btn {
+    color: var(--text-color);
+    transition: color 0.3s;
+}
+
+.navbar .nav-link:hover,
+.navbar .btn:hover {
+    color: var(--hover-color);
+    transition: color 0.3s;
+}
+
+/* Активное меню */
+.navbar .nav-link.active {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Кнопки */
+.btn-outline-light {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline-light:hover {
+    background: var(--primary-color);
+    color: var(--text-color);
+}
+
+.btn-outline-info {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline-info:hover {
+    background: var(--hover-color);
+    color: var(--text-color);
+}
+
+/* Аватар и имя пользователя */
+.avatar-container .avatar {
+    border: 2px solid var(--primary-color);
+}
+
+/* Поисковая форма */
+.form-control {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--primary-color);
+}
+
+.form-control:focus {
+    border-color: var(--hover-color);
+    box-shadow: 0 0 0 0.2rem rgba(255, 105, 180, 0.25);
+}
+
+/* Контейнер */
+.container-xl {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
