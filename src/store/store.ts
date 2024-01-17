@@ -14,6 +14,7 @@ export const setupStore = () => {
         reducer: rootReducer,
     })
 }
+//commit
 
 export type RootState = ReturnType<typeof rootReducer>
 export type AppStore = ReturnType<typeof setupStore>

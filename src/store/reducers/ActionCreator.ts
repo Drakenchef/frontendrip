@@ -185,12 +185,32 @@ export const deleteFlightById = (planet_id: number,fr_id:number) => async (dispa
             },
         });
         dispatch(flightSlice.actions.FlightsDeleteSuccess(response.data))
-        dispatch(fetchFlights())
+        dispatch(fetchFlightById2(fr_id))
     } catch (e) {
         dispatch(flightSlice.actions.FlightsFetchedError(`${e}`))
     }
 }
+export const fetchFlightById2 = (
+    id: string,
+) => async (dispatch: AppDispatch) => {
+    interface ISingleFlightResponse {
+        Flight: IFlight,
+    }
 
+    const accessToken = Cookies.get('jwtToken');
+    dispatch(userSlice.actions.setAuthStatus(accessToken != null && accessToken != ""));
+    try {
+        dispatch(flightSlice.actions.FlightsFetching())
+        const response = await axios.get<ISingleFlightResponse>(`/api/Flights/${id}`, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        });
+        dispatch(flightSlice.actions.FlightFetched(response.data.Flight))
+    } catch (e) {
+        dispatch(flightSlice.actions.FlightsFetchedError(`${e}`))
+    }
+}
 // export const fetchFlightById = (
 //     id: string,
 //     setPage: (name: string, id: number) => void
