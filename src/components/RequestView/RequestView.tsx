@@ -39,7 +39,6 @@ const RequestView: FC<RequestViewProps> = ({setPage}) => {
 
         const handleFilterInterval = setInterval(() => {
             handleFilter();
-            console.log(role)
         }, 3000);
 
         const cleanup = () => {
@@ -115,7 +114,7 @@ const RequestView: FC<RequestViewProps> = ({setPage}) => {
             const bdDate = new Date(bdDateString)
             const start = startDateString ? new Date(startDateString) : new Date('0001-01-01')
             const end = endDateString ? new Date(endDateString) : new Date('2033-12-21')
-            return (!startDate || bdDate >= start) && (!endDate || bdDate <= end)
+            return (!startDate || bdDate > start) && (!endDate || bdDate < end)
         }
 
         if (Flight) {
@@ -245,7 +244,7 @@ const RequestView: FC<RequestViewProps> = ({setPage}) => {
                     </tr>
                     </thead>
                     <tbody>
-                    {/*(filteredByUsers ? filteredByUsers : Flight.Flights).map((Flight) => (*/}
+
                     {filteredFlights && role != '2'
                         ? filteredFlights.map((Flight) => (
                             <tr key={Flight.id} onClick={() => clickCell(Flight.id)}>
