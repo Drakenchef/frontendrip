@@ -50,7 +50,7 @@ const PlanetList: FC<PlanetsListProps> = ({setPage}) => {
                 className="d-flex justify-content-between align-items-center mb-3"
                 style={{ padding: '0 50px' }} // добавляем отступы от краев контейнера
             >
-                <Form onSubmit={handleSearch} className="d-flex" style={{ maxWidth: '250px', flex: '1' }}>
+                <Form onSubmit={handleSearch} className="d-flex" style={{ maxWidth: '250px', flex: '1'}}>
                     <FormControl
                         id={'search-text-field'}
                         type="text"

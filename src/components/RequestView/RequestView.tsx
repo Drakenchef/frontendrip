@@ -95,7 +95,7 @@ const RequestView: FC<RequestViewProps> = ({setPage}) => {
         if (role == '2') {
         dispatch(fetchFlightsFilter(formattedStartDate, formattedEndDate, selectedStatus));
         } else {
-            dispatch(fetchFlightsFilter(formattedStartDate, formattedEndDate));
+            localFilter(formattedStartDate, formattedEndDate)
         }
     };
 
@@ -245,9 +245,9 @@ const RequestView: FC<RequestViewProps> = ({setPage}) => {
                     </tr>
                     </thead>
                     <tbody>
-
+                    {/*(filteredByUsers ? filteredByUsers : Flight.Flights).map((Flight) => (*/}
                     {filteredFlights && role != '2'
-                        ? (filteredByUsers ? filteredByUsers : Flight.Flights).map((Flight) => (
+                        ? filteredFlights.map((Flight) => (
                             <tr key={Flight.id} onClick={() => clickCell(Flight.id)}>
                                 <td>{Flight.id}</td>
                                 <td>{Flight.ams || 'Не задано'}</td>
