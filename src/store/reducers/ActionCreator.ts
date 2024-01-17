@@ -137,11 +137,12 @@ export const deleteFlightById = (planet_id: number,flight_id:number) => async (d
             },
             data: {
                 planet_id: planet_id,
-                fr_id: fr_id
+                fr_id: flight_id
             },
         });
         dispatch(FlightSlice.actions.FlightsDeleteSuccess(response.data))
-        dispatch(fetchFlights())
+        dispatch(fetchFlightById2(flight_id))
+        console.log("delete")
     } catch (e) {
         dispatch(FlightSlice.actions.FlightsFetchedError(`${e}`))
     }
@@ -386,6 +387,27 @@ export const fetchFlightById = (
             }
         });
         setPage(response.data.Flight.ams, response.data.Flight.id)
+        dispatch(FlightSlice.actions.FlightFetched(response.data.Flight))
+    } catch (e) {
+        dispatch(FlightSlice.actions.FlightsFetchedError(`${e}`))
+    }
+}
+export const fetchFlightById2 = (
+    id: string,
+) => async (dispatch: AppDispatch) => {
+    interface ISingleFlightResponse {
+        Flight: IFlight,
+    }
+
+    const accessToken = Cookies.get('jwtToken');
+    dispatch(userSlice.actions.setAuthStatus(accessToken != null && accessToken != ""));
+    try {
+        dispatch(FlightSlice.actions.FlightsFetching())
+        const response = await axios.get<ISingleFlightResponse>(`/api/Flights/${id}`, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        });
         dispatch(FlightSlice.actions.FlightFetched(response.data.Flight))
     } catch (e) {
         dispatch(FlightSlice.actions.FlightsFetchedError(`${e}`))

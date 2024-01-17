@@ -19,8 +19,8 @@ const TableView: FC<TableViewProps> = ({planets_request, status}) => {
 //asdasdasdads
     const handleDelete = async (planet_id: number, fr_id:number) => {
         dispatch(minus());
-        await dispatch(deleteFlightById(planet_id, fr_id));
-        navigate(-1)
+        dispatch(deleteFlightById(planet_id, fr_id));
+        // navigate(-1)
         // Здесь await убедится, что запрос fetchFlights() выполнится после удаления
     };
 

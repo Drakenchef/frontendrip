@@ -60,23 +60,18 @@ const RequestView: FC<RequestViewProps> = ({setPage}) => {
         setSelectedStatus('')
     }
 
-    const handlerApprove = () => {
-        if (singleFlight) {
-            dispatch(moderatorUpdateStatus(singleFlight.id, "завершён", modername))
-            setTimeout(() => {
-                navigate("/request"); // Предполагаемое действие для повторной загрузки данных из бекенда
-            }, 100);
-
-        }
+    const handlerApprove = (Flight_id) => {
+        dispatch(moderatorUpdateStatus(Flight_id, "завершён", modername))
+        setTimeout(() => {
+            navigate("/request"); // Предполагаемое действие для повторной загрузки данных из бекенда
+        }, 100);
     }
 
-    const handleDiscard = () => {
-        if (singleFlight) {
-            dispatch(moderatorUpdateStatus(singleFlight.id, "отклонён", modername))
-            setTimeout(() => {
-                navigate("/request"); // Предполагаемое действие для повторной загрузки данных из бекенда
-            }, 100);
-        }
+    const handleDiscard = (Flight_id) => {
+        dispatch(moderatorUpdateStatus(Flight_id, "отклонён", modername))
+        setTimeout(() => {
+            navigate("/request"); // Предполагаемое действие для повторной загрузки данных из бекенда
+        }, 100);
     }
 
     const handleFilter = () => {
