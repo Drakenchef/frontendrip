@@ -46,7 +46,7 @@ const TableView: FC<TableViewProps> = ({planets_request, status}) => {
                         <td className="Planet-name-td">{item.planet.name}</td>
                         <td>{item.planet.description}</td>
                         {
-                            status != "отклонен" && status != "удален" && status != "отменен" && status != "завершен" && <td className="delete-td">
+                            status != "отклонён" && status != "удалён" && status != "отменён" && status != "завершён" && <td className="delete-td">
                                 <img
                                     className="delete-button-td"
                                     src="/dustbin.png"
