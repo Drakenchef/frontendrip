@@ -12,20 +12,22 @@ import {format} from "date-fns";
 import {useNavigate} from 'react-router-dom';
 import Cookies from "js-cookie";
 import {IFlight} from "../../models/models.ts";
+import {progressSlice} from "../../store/reducers/ProgressData.ts";
 
 interface RequestViewProps {
     setPage: () => void;
 }
 
 const RequestView: FC<RequestViewProps> = ({setPage}) => {
+    const {searchValue, datestart, dateend} = useAppSelector(state => state.progressReducer)
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const {Flight, error, success} = useAppSelector((state) => state.FlightReducer);
     const {singleFlight, successs, errorr} = useAppSelector(state => state.FlightReducer)
 
     const {isAuth} = useAppSelector((state) => state.userReducer);
-    const [startDate, setStartDate] = useState<Date | null>(null);
-    const [endDate, setEndDate] = useState<Date | null>(null);
+    const [startDate, setStartDate] = useState<Date | null>(datestart);
+    const [endDate, setEndDate] = useState<Date | null>(dateend);
     const [selectedStatus, setSelectedStatus] = useState<string>('');
     const role = Cookies.get('role')
     const [filteredFlights, setFilteredFlights] = useState<IFlight[] | null>(null);
@@ -166,7 +168,11 @@ const RequestView: FC<RequestViewProps> = ({setPage}) => {
                             <label>Начало диапазона формирования:</label>
                             <DatePicker
                                 selected={startDate}
-                                onChange={(date) => setStartDate(date)}
+                                onChange={(date) => {
+                                    setStartDate(date)
+                                    dispatch(progressSlice.actions.setStartDate)
+                                }}
+                                // setStartDate(date)
                                 className="custom-datepicker mb-2"
                                 popperPlacement="bottom-start"
                             />
@@ -174,7 +180,10 @@ const RequestView: FC<RequestViewProps> = ({setPage}) => {
                             <label>Конец диапазона формирования:</label>
                             <DatePicker
                                 selected={endDate}
-                                onChange={(date) => setEndDate(date)}
+                                onChange={(date) => {
+                                    setEndDate(date)
+                                    dispatch(progressSlice.actions.setEndDate)
+                            }}
                                 className="custom-datepicker mb-2"
                                 popperPlacement="bottom-start"
                             />
