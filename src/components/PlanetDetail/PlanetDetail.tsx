@@ -66,7 +66,7 @@ const PlanetDetail: FC<PlanetDetailProps> = ({setPage}) => {
 
     async function fetchPlanet() {
         try {
-            const response = await fetch(`http://localhost:8888/Planet/${params.id}`);
+            const response = await fetch(`/api/Planet/${params.id}`);
 
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -98,10 +98,17 @@ const PlanetDetail: FC<PlanetDetailProps> = ({setPage}) => {
             : <div className="Planet-card-body">
                 <div className="card-container">
                     <span className="pro">Планета</span>
+
                     <img
                         className="round"
-                        src={Planet?.image}
-                        alt={Planet?.name}
+                        src={Planet.image || "https://i.postimg.cc/RVvrcFjm/earth.jpg"}
+                        alt="Image"
+                        onError={({ currentTarget }) => {
+                            currentTarget.onerror = null;
+                            currentTarget.src = "https://i.postimg.cc/RVvrcFjm/earth.jpg";
+                        }}
+
+                        id={`photo-${Planet.id}`}
                     />
                     <h3>{Planet?.name}</h3>
                     {/*<h6>Статус: {Planet?.status.status_name}</h6>*/}

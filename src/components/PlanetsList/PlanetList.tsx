@@ -27,7 +27,7 @@ const PlanetsList: FC<PlanetsListProps> = ({setPage, searchValue, resetSearchVal
     }, [searchValue, reloadPage]);
 
     const fetchPlanets = async () => {
-        const url = 'http://localhost:8888/Planets' + `?search=${searchValue ?? ''}`;
+        const url = '/api/Planets' + `?search=${searchValue ?? ''}`;
 
         const response = await fetch(url, {
             method: "GET",
@@ -53,8 +53,8 @@ const PlanetsList: FC<PlanetsListProps> = ({setPage, searchValue, resetSearchVal
 
     const filterMockData = () => {
         if (searchValue) {
-            const filteredPlanets = mockPlanets.filter(Planet =>
-                Planet.name?.toLowerCase().includes((searchValue ?? '').toLowerCase())
+            const filteredPlanets = mockPlanets.filter(planet =>
+                planet.name?.toLowerCase().includes((searchValue ?? '').toLowerCase())
             );
             if (filteredPlanets.length === 0) {
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment

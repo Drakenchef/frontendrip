@@ -9,7 +9,7 @@ interface PlanetItemProps {
     isServer: boolean
     reloadPage: () => void
 }
-//
+
 const PlanetItem: FC<PlanetItemProps> = ({Planet, onClick, isServer, reloadPage}) => {
     const deleteClickHandler = () => {
         DeleteData()
@@ -38,10 +38,12 @@ const PlanetItem: FC<PlanetItemProps> = ({Planet, onClick, isServer, reloadPage}
     return (
         <div className="card-Planet-item" data-Planet-id={Planet.id}>
             <img
-                src={Planet.image}
+                src={Planet.image || "https://i.postimg.cc/RVvrcFjm/earth.jpg"}
                 alt="Image"
-                onError={({currentTarget}) => {currentTarget.onerror = null;
-                    currentTarget.src="https://Drakenchef.github.io/frontendrip/"}}
+                onError={({ currentTarget }) => {
+                    currentTarget.onerror = null;
+                    currentTarget.src = "https://i.postimg.cc/RVvrcFjm/earth.jpg";
+                }}
                 className="photo"
                 onClick={() => onClick(Planet.id)}
                 id={`photo-${Planet.id}`}
@@ -59,5 +61,5 @@ const PlanetItem: FC<PlanetItemProps> = ({Planet, onClick, isServer, reloadPage}
         </div>
     );
 };
-// asdasdasddfsdfasdsadasd
+
 export default PlanetItem;
