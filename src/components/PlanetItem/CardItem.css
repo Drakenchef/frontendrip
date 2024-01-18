@@ -1,0 +1,74 @@
+.card-city-item {
+    background-color: #ffffff; /* Белый фон карточек для контраста */
+    width: 100%; /* Ширина теперь определяется grid */
+    margin: 0; /* Убираем внешний отступ */
+    border-radius: 4px; /* Меньшие скругления для более современного вида */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Тень для карточки */
+}
+
+.photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container-card {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(255, 255, 255, 0.66);
+    background: #231E90;
+    text-align: center;
+    color: #ffffff;
+    font-family: "Monaco", serif;
+    font-size: 27px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-city-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 14px rgba(38, 190, 239, 0.8);
+}
+
+.card-city-item:hover .photo {
+    filter: brightness(0.7);
+}
+
+.deleted-trash {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 30px;
+    height: 30px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card-city-item:hover .deleted-trash {
+    opacity: 1;
+}
+
+.card-city-item:hover .circle {
+    opacity: 1;
+}
+
+.circle {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 36px;
+    height: 36px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.circle:hover {
+    opacity: 1;
+    background-color: #cc1111;
+}
