@@ -13,7 +13,7 @@ import {useNavigate} from 'react-router-dom';
 import Cookies from "js-cookie";
 import {IFlight} from "../../models/models.ts";
 import {progressSlice} from "../../store/reducers/ProgressData.ts";
-
+import ru from 'date-fns/locale/ru'
 interface RequestViewProps {
     setPage: () => void;
 }
@@ -175,6 +175,7 @@ const RequestView: FC<RequestViewProps> = ({setPage}) => {
                                 // setStartDate(date)
                                 className="custom-datepicker mb-2"
                                 popperPlacement="bottom-start"
+                                locale={ru}
                             />
 
                             <label>Конец диапазона формирования:</label>
@@ -186,6 +187,7 @@ const RequestView: FC<RequestViewProps> = ({setPage}) => {
                             }}
                                 className="custom-datepicker mb-2"
                                 popperPlacement="bottom-start"
+                                locale={ru}
                             />
 
                             {role === '2' && (
