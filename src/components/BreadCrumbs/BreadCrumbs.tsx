@@ -21,7 +21,7 @@ const Breadcrumbs: FC<BreadcrumbsProps> = ({paths}) => {
                         {index === paths.length - 1 ? (
                             path.name
                         ) : (
-                            <Link to={path.to}>{path.name}</Link>
+                            <Link className="mysolink" to={path.to}>{path.name}</Link>
                         )}
                     </div>
                 ))}

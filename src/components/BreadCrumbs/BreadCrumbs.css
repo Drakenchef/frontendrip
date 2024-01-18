@@ -3,6 +3,7 @@
     list-style: none;
     padding: 0;
     font-size: 18px;
+    color: red
 }
 
 .breadcrumb-item-2 {
@@ -13,6 +14,7 @@
     display: inline-block;
     background-color: #2d2d2d;
     border-radius: 20px;
+    color: red
 }
 
 .breadcrumb-item:last-child {
@@ -26,3 +28,6 @@
     color: #ffffff; /* Замените на цвет стрелочки, если необходимо */
 }
 
+.mysolink{
+    color:red
+}
