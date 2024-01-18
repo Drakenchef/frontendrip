@@ -3,9 +3,12 @@
     margin-left: 80px;
     margin-right: 80px;
     border-collapse: collapse;
-    background-color: #000000;
+    background-color: #e85f5f;
     color: #fff;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 0 15px rgba(26, 2, 250, 0.44);
+    ;
+}
+.shadow{
+    color:#000000
 }

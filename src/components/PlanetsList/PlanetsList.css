@@ -9,3 +9,13 @@
 body {
     background-color: #04041c;
 }
+
+.shadow{
+    background-color : #67023f;
+    border-color: #e50d8b;
+}
+
+.shadow:hover{
+    background-color: #e50d8b;
+    border-color: #e50d8b;
+}

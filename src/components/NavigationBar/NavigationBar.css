@@ -18,7 +18,7 @@
 /* Основные цвета */
 :root {
     --primary-color: #e85f5f;        /* Ярко-розовый */
-    --hover-color: rgba(23, 85, 199, 0.43);          /* Светло-розовый для эффектов при наведении */
+    --hover-color: #e85f5f;          /* Светло-розовый для эффектов при наведении */
     --text-color: #ffffff;           /* Белый текст */
     --navbar-bg-color: #212529;      /* Темный фон навбара */
 }
@@ -36,7 +36,7 @@
 
 .navbar .nav-link:hover,
 .navbar .btn:hover {
-    color: var(--hover-color);
+    color: #e85f5f;
     transition: color 0.3s;
 }
 

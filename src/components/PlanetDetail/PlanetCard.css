@@ -82,12 +82,12 @@ button.primary {
 }
 
 button.primary.ghost {
-    background-color: transparent;
+    background-color: #e85f5f;
     color: #02899C;
 }
 
 .skills {
-    background-color: #1F1A36;
+    background-color: #e85f5f;
     text-align: left;
     padding: 15px;
     margin-top: 30px;

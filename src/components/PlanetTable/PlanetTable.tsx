@@ -28,7 +28,7 @@ const PlanetTable: FC<PlanetTableProps> = ({setPage}) => {
 
             <Nav className="ms-2">
                 <Nav.Item>
-                    <Link to="/add-Planet-2" className="btn btn-outline-primary mt-2"
+                    <Link to="/add-Planet-2" className="btn btn-outline-primary mt-2 shadow"
                           style={{marginLeft: '80px', marginBottom: '30px'}}>
                         Добавить планету
                     </Link>

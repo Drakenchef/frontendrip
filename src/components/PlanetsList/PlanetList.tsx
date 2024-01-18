@@ -91,6 +91,7 @@ const PlanetList: FC<PlanetsListProps> = ({setPage}) => {
                     variant="primary"
                     onClick={didTapBasket}
                     disabled={basketID == 0}
+                    className="shadow"
                 >
                     Создать заявку
                 </Button>
