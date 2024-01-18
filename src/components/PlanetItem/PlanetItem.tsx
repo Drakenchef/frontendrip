@@ -9,7 +9,7 @@ interface PlanetItemProps {
     isServer: boolean
     reloadPage: () => void
 }
-
+//
 const PlanetItem: FC<PlanetItemProps> = ({Planet, onClick, isServer, reloadPage}) => {
     const deleteClickHandler = () => {
         DeleteData()
