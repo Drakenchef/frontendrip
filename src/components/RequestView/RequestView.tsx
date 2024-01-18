@@ -64,14 +64,14 @@ const RequestView: FC<RequestViewProps> = ({setPage}) => {
         dispatch(moderatorUpdateStatus(Flight_id, "завершён", modername))
         setTimeout(() => {
             navigate("/request"); // Предполагаемое действие для повторной загрузки данных из бекенда
-        }, 5);
+        }, 2);
     }
 
     const handleDiscard = (Flight_id) => {
         dispatch(moderatorUpdateStatus(Flight_id, "отклонён", modername))
         setTimeout(() => {
             navigate("/request"); // Предполагаемое действие для повторной загрузки данных из бекенда
-        }, 5);
+        }, 2);
     }
 
     const handleFilter = () => {
