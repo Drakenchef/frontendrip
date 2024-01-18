@@ -49,7 +49,7 @@ const NavigationBar = () => {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Item className="mx-3">
-                                <Link to="/Planets" className="nav-link ps-0 text-info">
+                                <Link to="/Planets" className="nav-link ps-0">
                                     Меню
                                 </Link>
                             </Nav.Item>
