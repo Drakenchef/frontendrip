@@ -19,7 +19,7 @@ interface RequestViewProps {
 }
 
 const RequestView: FC<RequestViewProps> = ({setPage}) => {
-    const {searchValue, datestart, dateend} = useAppSelector(state => state.progressReducer)
+    const {searchValue, datestart, dateend, user} = useAppSelector(state => state.progressReducer)
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const {Flight, error, success} = useAppSelector((state) => state.FlightReducer);
@@ -29,10 +29,11 @@ const RequestView: FC<RequestViewProps> = ({setPage}) => {
     const [startDate, setStartDate] = useState<Date | null>(datestart);
     const [endDate, setEndDate] = useState<Date | null>(dateend);
     const [selectedStatus, setSelectedStatus] = useState<string>('');
+    const [selectedUser, setUserName] = useState<string>(user);
     const role = Cookies.get('role')
     const [filteredFlights, setFilteredFlights] = useState<IFlight[] | null>(null);
     const [filteredByUsers, setFilteredUsers] = useState<IFlight[] | null>(null);
-    const [textValue, setTextValue] = useState<string>('');
+    const [textValue, setTextValue] = useState<string>(user);
     const modername = Cookies.get('userName')
 
     useEffect(() => {
@@ -154,7 +155,10 @@ const RequestView: FC<RequestViewProps> = ({setPage}) => {
                                         type="text"
                                         placeholder="Введите пользователя"
                                         value={textValue}
-                                        onChange={(e) => setTextValue(e.target.value)}
+                                        onChange={(e) => {
+                                            setTextValue(e.target.value)
+                                            dispatch(progressSlice.actions.setUserName(e.target.value))
+                                        }}
                                         onKeyPress={(e) => {
                                             if (e.key === 'Enter') {
                                                 handleInputChange();
@@ -170,7 +174,7 @@ const RequestView: FC<RequestViewProps> = ({setPage}) => {
                                 selected={startDate}
                                 onChange={(date) => {
                                     setStartDate(date)
-                                    dispatch(progressSlice.actions.setStartDate)
+                                    dispatch(progressSlice.actions.setStartDate(date!))
                                 }}
                                 // setStartDate(date)
                                 className="custom-datepicker mb-2"
@@ -183,7 +187,7 @@ const RequestView: FC<RequestViewProps> = ({setPage}) => {
                                 selected={endDate}
                                 onChange={(date) => {
                                     setEndDate(date)
-                                    dispatch(progressSlice.actions.setEndDate)
+                                    dispatch(progressSlice.actions.setEndDate(date!))
                             }}
                                 className="custom-datepicker mb-2"
                                 popperPlacement="bottom-start"

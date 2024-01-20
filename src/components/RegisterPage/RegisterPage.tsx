@@ -81,7 +81,7 @@ const RegisterPage: FC<RegisterPageProps> = () => {
                                 required
                             />
 
-                            <Button
+                            <button
                                 variant="primary"
                                 type="submit"
                                 className="w-100 mt-4"
@@ -89,7 +89,7 @@ const RegisterPage: FC<RegisterPageProps> = () => {
                                 style={{borderRadius: '10px'}}
                             >
                                 Зарегистрироваться
-                            </Button>
+                            </button>
                         </div>
                     </Col>
                 </Row>

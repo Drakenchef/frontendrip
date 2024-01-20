@@ -87,14 +87,14 @@ const PlanetList: FC<PlanetsListProps> = ({setPage}) => {
                             Поиск
                         </Button>
                     </Form>
-                <Button
+                <button
                     variant="primary"
                     onClick={didTapBasket}
                     disabled={basketID == 0}
                     className="shadow"
                 >
                     Создать заявку
-                </Button>
+                </button>
             </div>
             <List items={Planets ?? []} renderItem={(Planet: IPlanet) =>
                 <PlanetItem

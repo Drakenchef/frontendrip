@@ -53,10 +53,10 @@ const LoginPage: FC<LoginPageProps> = () => {
                                 required
                             />
 
-                            <Button variant="primary" type="submit" className="w-100 mt-4" onClick={handleSubmit}
+                            <button variant="primary" type="submit" className="w-100 mt-4" onClick={handleSubmit}
                                     style={{borderRadius: '10px'}}>
                                 Войти
-                            </Button>
+                            </button>
                         </div>
                     </Col>
                 </Row>

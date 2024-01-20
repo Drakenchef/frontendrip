@@ -106,9 +106,9 @@ const CreatePlanetPage: FC<AddPlanetProps> = ({setPage}) => {
                                 />
                             </Form.Group>
 
-                            <Button variant="primary" type="submit" style={{marginTop: '30px'}} onClick={save}>
+                            <button variant="primary" type="submit" style={{marginTop: '30px'}} onClick={save}>
                                 Создать
-                            </Button>
+                            </button>
                         </Form>
                     </Col>
                 </Row>

@@ -106,9 +106,9 @@ const PlanetTableCell: FC<PlanetTableCellProps> = ({PlanetData}) => {
                     {/*</Form.Group>*/}
 
                     <div style={{display: 'flex', justifyContent: 'space-between'}} className='my-3'>
-                        <Button variant="primary" onClick={handleSaveClick}>
+                        <button variant="primary" onClick={handleSaveClick}>
                             Сохранить изменения
-                        </Button>
+                        </button>
 
                         <Button variant='outline-light' onClick={() => {
                             setIsEditing(false)
