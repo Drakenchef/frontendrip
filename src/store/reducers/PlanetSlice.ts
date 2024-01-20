@@ -31,6 +31,9 @@ export const PlanetSlice = createSlice({
         minus(state) {
             state.serialNumber = state.serialNumber == 1 ? 1 :  state.serialNumber - 1
         },
+        nothing(state){
+            state.serialNumber = state.serialNumber
+        },
         reset(state) {
             state.serialNumber = 1
         },

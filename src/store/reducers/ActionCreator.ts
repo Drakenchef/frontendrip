@@ -164,7 +164,10 @@ export const flightUp = (planet_id: number,fr_id:number) => async (dispatch: App
     }
     try {
         dispatch(FlightSlice.actions.FlightsFetching())
+        // dispatch(FlightSlice.actions.FlightsUpDownSuccess(config.data))
+        // dispatch(fetchFlightById2(fr_id))
         const response = await axios(config);
+        dispatch(fetchFlightById2(fr_id))
         // dispatch(FlightSlice.actions.FlightsUpDownSuccess(response.data))
     } catch (e) {
         dispatch(FlightSlice.actions.FlightsFetchedError(`${e}`))
@@ -186,7 +189,10 @@ export const flightDown = (planet_id: number,fr_id:number) => async (dispatch: A
     }
     try {
         dispatch(FlightSlice.actions.FlightsFetching())
+        // dispatch(FlightSlice.actions.FlightsFetching())
+
         const response = await axios(config);
+        dispatch(fetchFlightById2(fr_id))
         // dispatch(FlightSlice.actions.FlightsUpDownSuccess(response.data))
     } catch (e) {
         dispatch(FlightSlice.actions.FlightsFetchedError(`${e}`))
