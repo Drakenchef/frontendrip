@@ -207,13 +207,13 @@ const RequestView: FC<RequestViewProps> = ({setPage}) => {
                                 </>
                             )}
 
-                            <Button
-                                style={{width: '120px'}}
-                                className="mb-2"
-                                onClick={handleFilter}
-                            >
-                                Применить
-                            </Button>
+                            {/*<Button*/}
+                            {/*    style={{width: '120px'}}*/}
+                            {/*    className="mb-2"*/}
+                            {/*    onClick={handleFilter}*/}
+                            {/*>*/}
+                            {/*    Применить*/}
+                            {/*</Button>*/}
                             <Button
                                 variant="outline-danger"
                                 style={{width: '120px'}}

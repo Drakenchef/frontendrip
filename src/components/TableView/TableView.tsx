@@ -2,7 +2,7 @@ import {FC} from "react";
 import './TableView.css'
 import { IPlanetRequests} from "../../models/models.ts";
 import {useAppDispatch} from "../../hooks/redux.ts";
-import {deleteFlightById} from "../../store/reducers/ActionCreator.ts";
+import {deleteFlightById, flightDown, flightUp, updateFlight} from "../../store/reducers/ActionCreator.ts";
 import {PlanetSlice} from "../../store/reducers/PlanetSlice.ts";
 import {useNavigate} from "react-router-dom";
 
@@ -23,6 +23,12 @@ const TableView: FC<TableViewProps> = ({planets_request, status}) => {
         // navigate(-1)
         // Здесь await убедится, что запрос fetchFlights() выполнится после удаления
     };
+    const handleUp = async (planet_id: number, fr_id:number) => {
+        dispatch(flightUp(planet_id, fr_id));
+    };
+    const handleDown = async (planet_id: number, fr_id:number) => {
+        dispatch(flightDown(planet_id, fr_id));
+    };
 
 
     return (
@@ -39,7 +45,7 @@ const TableView: FC<TableViewProps> = ({planets_request, status}) => {
                 <tbody>
                 {planets_request.map((item, index) => (
                     <tr key={index}>
-                        <td className="Planet-number-td">{item.planet_id}</td>
+                        <td className="Planet-number-td">{item.flight_number}</td>
                         <td className="image-td">
                             <img src={item.planet.image} alt="photo"/>
                         </td>
@@ -52,6 +58,18 @@ const TableView: FC<TableViewProps> = ({planets_request, status}) => {
                                     src="/dustbin.png"
                                     alt="Delete"
                                     onClick={() => handleDelete(item.planet_id, item.fr_id)}
+                                />
+                                <img
+                                    className="delete-button-td"
+                                    src="/uparrow.jpg"
+                                    alt="Up"
+                                    onClick={() => handleUp(item.planet_id, item.fr_id)}
+                                />
+                                <img
+                                    className="delete-button-td"
+                                    src="/downarrow.jpg"
+                                    alt="Down"
+                                    onClick={() => handleDown(item.planet_id, item.fr_id)}
                                 />
                             </td>
                         }

@@ -86,6 +86,11 @@ export interface IDeletePlanetRequest {
     status: string,
     description?: string,
 }
+export interface IupdatedPlanetRequest {
+    fr_id: number,
+    planet_id: number,
+    command:number,
+}
 
 export interface IRequest {
     Flights: IFlight[]

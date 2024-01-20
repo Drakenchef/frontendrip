@@ -7,12 +7,13 @@ import {
     IDeletePlanetRequest, IFlight,
     IFlightResponse, IRegisterResponse,
     IRequest,
-    mockPlanets, IPlanet
+    mockPlanets, IPlanet, IUpdatePlanetNumberInRequest, IupdatedPlanetRequest
 } from "../../models/models.ts";
 import Cookies from 'js-cookie';
 import {PlanetSlice} from "./PlanetSlice.ts"
 import {FlightSlice} from "./FlightSlice.ts";
 import {userSlice} from "./UserSlice.ts";
+import {fr} from "date-fns/locale";
 
 
 export const fetchPlanets = (searchValue?: string, makeLoading: boolean = true) => async (dispatch: AppDispatch) => {
@@ -147,6 +148,48 @@ export const deleteFlightById = (planet_id: number,flight_id:number) => async (d
         dispatch(FlightSlice.actions.FlightsFetchedError(`${e}`))
     }
 }
+export const flightUp = (planet_id: number,fr_id:number) => async (dispatch: AppDispatch) => {
+    const accessToken = Cookies.get('jwtToken');
+
+    try {
+        dispatch(FlightSlice.actions.FlightsFetching())
+        const response = await axios.put<IupdatedPlanetRequest>(`/api/PlanetsRequests`, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            },
+            data: {
+                Planet_id: planet_id,
+                fr_id: fr_id,
+                command: 2
+            },
+        });
+        dispatch(FlightSlice.actions.FlightsUpDownSuccess(response.data))
+        dispatch(fetchFlightById2(fr_id))
+    } catch (e) {
+        dispatch(FlightSlice.actions.FlightsFetchedError(`${e}`))
+    }
+}
+export const flightDown = (planet_id: number,fr_id:number) => async (dispatch: AppDispatch) => {
+    const accessToken = Cookies.get('jwtToken');
+
+    try {
+        dispatch(FlightSlice.actions.FlightsFetching())
+        const response = await axios.put<IupdatedPlanetRequest>(`/api/PlanetsRequests`, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            },
+            data: {
+                Planet_id: planet_id,
+                fr_id: fr_id,
+                command: 1
+            },
+        });
+        dispatch(FlightSlice.actions.FlightsUpDownSuccess(response.data))
+        dispatch(fetchFlightById2(fr_id))
+    } catch (e) {
+        dispatch(FlightSlice.actions.FlightsFetchedError(`${e}`))
+    }
+}
 
 export const deletePlanet = (PlanetId: number) => async (dispatch: AppDispatch) => {
     const accessToken = Cookies.get('jwtToken')
@@ -175,7 +218,7 @@ export const deletePlanet = (PlanetId: number) => async (dispatch: AppDispatch) 
     }
 }
 
-export const addPlanetIntoFlight = (PlanetId: number, serialNumber: number, PlanetName: string) => async (dispatch: AppDispatch) => {
+export const addPlanetIntoFlight = (PlanetId: number, flight_number: number, PlanetName: string) => async (dispatch: AppDispatch) => {
     const accessToken = Cookies.get('jwtToken');
 
     const config = {
@@ -186,7 +229,7 @@ export const addPlanetIntoFlight = (PlanetId: number, serialNumber: number, Plan
         },
         data: {
             Planet_id: PlanetId,
-            serial_number: serialNumber
+            flight_number: flight_number
         }
     }
 

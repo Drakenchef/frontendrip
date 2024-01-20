@@ -1,4 +1,4 @@
-import {IDeletePlanetRequest, IFlight, IRequest} from "../../models/models.ts";
+import {IDeletePlanetRequest, IFlight, IRequest, IupdatedPlanetRequest} from "../../models/models.ts";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 interface FlightState {
@@ -40,6 +40,11 @@ export const FlightSlice = createSlice({
             state.error = text
             state.success = "Планета успешно удалена из заявки"
         },
+        FlightsUpDownSuccess(state, action: PayloadAction<IupdatedPlanetRequest>) {
+            state.isLoading = false
+            state.success = "Планета успешно изменена в заявке"
+        },
+
         FlightsUpdated(state, action: PayloadAction<string[]>) {
             state.isLoading = false
             state.error = action.payload[0]
