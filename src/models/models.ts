@@ -86,10 +86,10 @@ export interface IDeletePlanetRequest {
     status: string,
     description?: string,
 }
-export interface IupdatedPlanetRequest {
-    fr_id: number,
+export interface IUpdatePlanetNumberInRequest {
     planet_id: number,
     command:number,
+    fr_id: number,
 }
 
 export interface IRequest {

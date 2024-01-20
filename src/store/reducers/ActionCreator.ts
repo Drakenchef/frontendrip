@@ -150,42 +150,44 @@ export const deleteFlightById = (planet_id: number,flight_id:number) => async (d
 }
 export const flightUp = (planet_id: number,fr_id:number) => async (dispatch: AppDispatch) => {
     const accessToken = Cookies.get('jwtToken');
-
+    const config = {
+        method: "put",
+        url: `/api/PlanetsRequests`,
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+        },
+        data: {
+            planet_id: planet_id,
+            command: 2,
+            fr_id: fr_id,
+        }
+    }
     try {
         dispatch(FlightSlice.actions.FlightsFetching())
-        const response = await axios.put<IupdatedPlanetRequest>(`/api/PlanetsRequests`, {
-            headers: {
-                Authorization: `Bearer ${accessToken}`
-            },
-            data: {
-                Planet_id: planet_id,
-                fr_id: fr_id,
-                command: 2
-            },
-        });
-        dispatch(FlightSlice.actions.FlightsUpDownSuccess(response.data))
-        dispatch(fetchFlightById2(fr_id))
+        const response = await axios(config);
+        // dispatch(FlightSlice.actions.FlightsUpDownSuccess(response.data))
     } catch (e) {
         dispatch(FlightSlice.actions.FlightsFetchedError(`${e}`))
     }
 }
 export const flightDown = (planet_id: number,fr_id:number) => async (dispatch: AppDispatch) => {
     const accessToken = Cookies.get('jwtToken');
-
+    const config = {
+        method: "put",
+        url: `/api/PlanetsRequests`,
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+        },
+        data: {
+            planet_id: planet_id,
+            command: 1,
+            fr_id: fr_id,
+        }
+    }
     try {
         dispatch(FlightSlice.actions.FlightsFetching())
-        const response = await axios.put<IupdatedPlanetRequest>(`/api/PlanetsRequests`, {
-            headers: {
-                Authorization: `Bearer ${accessToken}`
-            },
-            data: {
-                Planet_id: planet_id,
-                fr_id: fr_id,
-                command: 1
-            },
-        });
-        dispatch(FlightSlice.actions.FlightsUpDownSuccess(response.data))
-        dispatch(fetchFlightById2(fr_id))
+        const response = await axios(config);
+        // dispatch(FlightSlice.actions.FlightsUpDownSuccess(response.data))
     } catch (e) {
         dispatch(FlightSlice.actions.FlightsFetchedError(`${e}`))
     }
