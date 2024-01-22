@@ -1,12 +1,12 @@
-import {useNavigate} from 'react-router-dom';
-import React, {FC, useEffect, useState} from 'react';
+// import {useNavigate} from 'react-router-dom';
+import {FC, useEffect, useState} from 'react';
 import {IPlanet, mockPlanets} from "../../models/models.ts";
 import List from "../List.tsx";
 import PlanetItem from "../PlanetItem/PlanetItem.tsx";
 import './PlanetList.css'
-import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import {useNavigate} from "react-router-dom";
 
 interface PlanetsListProps {
     setPage: () => void
@@ -27,7 +27,7 @@ const PlanetsList: FC<PlanetsListProps> = ({setPage, searchValue, resetSearchVal
     const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(searchText)
-        const inputValue = (e.currentTarget.elements.namedItem('search') as HTMLInputElement)?.value;
+        // const inputValue = (e.currentTarget.elements.namedItem('search') as HTMLInputElement)?.value;
         handleSearchValue(searchText);
         globalsearchvalue = searchText ?? ''
     }

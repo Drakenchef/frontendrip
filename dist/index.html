@@ -4,75 +4,11 @@
     <meta charset="UTF-8"/>
     <link rel="icon" type="image/svg+xml" href="/frontendrip/vite.svg"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>AMS</title>
+    <title>Planets</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
-        <div class="container">
-            <a class="navbar-brand" href="/">
-                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                    <use class="#bootstrap"></use>
-                </svg>
-            </a>
-
-            <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav"
-                    aria-controls="navbarNav"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">
-                            На главную
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Полёты
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <form class="d-flex">
-                <input
-                        class="form-control form-control-dark me-2"
-                        type="search"
-                        placeholder="Введите планету"
-                        aria-label="Search"
-                        name="search"
-                />
-                <button class="btn btn-outline-light" type="submit">
-                    Поиск
-                </button>
-            </form>
-
-            <div class="ms-2">
-                <button class="btn btn-outline-light me-2">Войти</button>
-                <button class="btn btn-primary">Регистрация</button>
-            </div>
-        </div>
-    </nav>
-    <script>
-        const currentURL = window.location.href;
-        const url = new URL(currentURL);
-        if (url.searchParams.has('search')) {
-            const searchValue = url.searchParams.get('search');
-            console.log(searchValue);
-        } else {
-            console.log('Search parameter not found in the URL.');
-        }
-    </script>
-  <script type="module" crossorigin src="/frontendrip/assets/index-d5a0b7ef.js"></script>
-  <link rel="stylesheet" href="/frontendrip/assets/index-26d670bb.css">
+  <script type="module" crossorigin src="/frontendrip/assets/index-54db5bf5.js"></script>
+  <link rel="stylesheet" href="/frontendrip/assets/index-2ba929bb.css">
 </head>
 <body>
 <div id="root"></div>
