@@ -1,21 +1,40 @@
 import {useNavigate} from 'react-router-dom';
-import {FC, useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {IPlanet, mockPlanets} from "../../models/models.ts";
 import List from "../List.tsx";
 import PlanetItem from "../PlanetItem/PlanetItem.tsx";
 import './PlanetList.css'
+import FormControl from "react-bootstrap/FormControl";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 interface PlanetsListProps {
     setPage: () => void
     searchValue?: string
     resetSearchValue: () => void;
+    handleSearchValue: (value: string) => void
 }
-
-const PlanetsList: FC<PlanetsListProps> = ({setPage, searchValue, resetSearchValue}) => {
+let globalsearchvalue = ''
+const PlanetsList: FC<PlanetsListProps> = ({setPage, searchValue, resetSearchValue, handleSearchValue}) => {
     const [Planets, setPlanets] = useState<IPlanet[]>([]);
     const [serverIsWork, setServerStatus] = useState<boolean>(false);
     const [reloadPage, setReloadPage] = useState<boolean>(false);
+    // const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    //     e.preventDefault();
+    //     const inputValue = (e.currentTarget.elements.namedItem('search') as HTMLInputElement)?.value;
+    //     handleSearchValue(inputValue);
+    // };
+    const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        console.log(searchText)
+        const inputValue = (e.currentTarget.elements.namedItem('search') as HTMLInputElement)?.value;
+        handleSearchValue(searchText);
+        globalsearchvalue = searchText ?? ''
+    }
     const navigate = useNavigate();
+    const [searchText, setSearchText] = useState(globalsearchvalue)
+    // const [searchText, setSearchText] = useState(searchValue)
+
 
     useEffect(() => {
         setPage()
@@ -70,6 +89,37 @@ const PlanetsList: FC<PlanetsListProps> = ({setPage, searchValue, resetSearchVal
     }
 
     return (
+        <>
+        {/*<Form onSubmit={handleSearch} className="d-flex">*/}
+        {/*    <FormControl*/}
+        {/*        id={'search-text-field'}*/}
+        {/*        type="text"*/}
+        {/*        name="search"*/}
+        {/*        placeholder="Поиск планет"*/}
+        {/*        className="me-2"*/}
+        {/*        aria-label="Search"*/}
+        {/*    />*/}
+        {/*    <Button className ="searchbtn" type="submit" variant="outline-light">Поиск</Button>*/}
+        {/*</Form>*/}
+            <Form className="d-flex flex-row flex-grow-1 gap-2" onSubmit={handleSearch}>
+                <Form.Control
+                    type="text"
+                    placeholder="Поиск"
+                    className="form-control-sm flex-grow-1 shadow shadow-sm"
+                    data-bs-theme="dark"
+                    value={searchText}
+                    onChange={(e) => setSearchText(e.target.value)}
+                />
+                <Button
+                    variant="primary"
+                    size="sm"
+                    type="submit"
+                    className="shadow"
+                >
+                    Поиск
+                </Button>
+            </Form>
+
         <List items={Planets} renderItem={(Planet: IPlanet) =>
             <PlanetItem
                 key={Planet.id}
@@ -82,6 +132,7 @@ const PlanetsList: FC<PlanetsListProps> = ({setPage, searchValue, resetSearchVal
             />
         }
         />
+        </>
     );
 };
 

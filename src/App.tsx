@@ -19,14 +19,15 @@ function App() {
 
     return (
         <>
-            <NavigationBar handleSearchValue={(value) => setSearchValue(value)}/>
+            {/*<NavigationBar handleSearchValue={(value) => setSearchValue(value)}/>*/}
+            <NavigationBar></NavigationBar>
             <BreadCrumbs pages={pages}/>
             <>
                 <Routes>
                     <Route path="/" element={<Navigate to="Planets"/>}/>
                     <Route path="/Planets"
                            element={
-                               <PlanetsList
+                               <PlanetsList handleSearchValue={(value) => setSearchValue(value)}
                                    setPage={() => addPage([PlanetsPage])}
                                    searchValue={searchValue}
                                    resetSearchValue={resetSearchValue}

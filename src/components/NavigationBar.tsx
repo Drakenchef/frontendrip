@@ -32,17 +32,17 @@ const NavigationBar: FC<NavigationBarProps> = ({handleSearchValue}) => {
                             <Link to="/Planets" className="navbarlink">Полёты</Link>
                         </Nav.Item>
                     </Nav>
-                    <Form onSubmit={handleSearch} className="d-flex">
-                        <FormControl
-                            id={'search-text-field'}
-                            type="text"
-                            name="search"
-                            placeholder="Поиск планет"
-                            className="me-2"
-                            aria-label="Search"
-                        />
-                        <Button className ="searchbtn" type="submit" variant="outline-light">Поиск</Button>
-                    </Form>
+                    {/*<Form onSubmit={handleSearch} className="d-flex">*/}
+                    {/*    <FormControl*/}
+                    {/*        id={'search-text-field'}*/}
+                    {/*        type="text"*/}
+                    {/*        name="search"*/}
+                    {/*        placeholder="Поиск планет"*/}
+                    {/*        className="me-2"*/}
+                    {/*        aria-label="Search"*/}
+                    {/*    />*/}
+                    {/*    <Button className ="searchbtn" type="submit" variant="outline-light">Поиск</Button>*/}
+                    {/*</Form>*/}
                 </Navbar.Collapse>
             </div>
         </Navbar>
